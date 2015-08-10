@@ -34,10 +34,10 @@ function keyEvent(e) {
 
 document.addEventListener("keydown", keyEvent, false);
 
-(function() {
+window.onload = function() {
 	var clickBut = document.getElementById("but1");
 
 	clickBut.addEventListener("click", mousy, false);
 
 	clickBut = null;
-})()
+};
