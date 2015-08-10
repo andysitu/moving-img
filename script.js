@@ -39,12 +39,15 @@ function keyEvent(e) {
 
 }
 
-document.addEventListener("keydown", keyEvent, false);
-
 window.onload = function() {
 	var clickBut = document.getElementById("but1");
+	var img = document.getElementById("picture");
 
-	clickBut.addEventListener("click", mousy, false);
+	clickBut.addEventListener("click", mouse.runMouse, false);
+	img.addEventListener("click", mouse.runMouse, false);
 
 	clickBut = null;
+	img = null;
+
+	document.addEventListener("keydown", keyEvent, false);
 };
