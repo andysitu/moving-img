@@ -3,11 +3,16 @@ var pict = {
 	y: 10
 }
 
-function mousy(e) {
+var mouse = {
+	mousy(e) {
 
-	var img = document.getElementById("picture");
-	img.style.left = e.pageX + "px";
-	img.style.top = e.pageY + "px";
+		var img = document.getElementById("picture");
+		img.style.left = e.pageX + "px";
+		img.style.top = e.pageY + "px";
+	}, 
+	runMouse() {
+		document.addEventListener("mousemove", mouse.mousy, false);
+	}
 }
 
 function keyEvent(e) {
@@ -25,10 +30,6 @@ function keyEvent(e) {
 	img.style.left = pict.x + "px";
 	img.style.top = pict.y + "px";
 
-}
-
-function runMouse() {
-	document.addEventListener("mousemove", mousy, false);
 }
 
 document.addEventListener("keydown", keyEvent, false);
