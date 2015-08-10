@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+	<meta charset="utf-8">
+	<title>Testing</title>
+
+	<style>
+		img {
+			position: absolute;
+			left: 10px;
+			top: 10px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<img id="picture" src="player.png" alt="A picture">
+	<script type="text/javascript">
+		function mousy(e) {
+			var img = document.getElementById("picture");
+			img.style.left = e.pageX + "px";
+			img.style.top = e.pageY + "px";
+		}
+
+		document.addEventListener("mousemove", mousy, false);
+	</script>
+</body>
+
+</html>
