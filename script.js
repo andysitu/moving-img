@@ -4,14 +4,21 @@ var pict = {
 }
 
 var mouse = {
+	mousyStatus: false,
 	mousy(e) {
-
 		var img = document.getElementById("picture");
 		img.style.left = e.pageX + "px";
 		img.style.top = e.pageY + "px";
 	}, 
 	runMouse() {
-		document.addEventListener("mousemove", mouse.mousy, false);
+		if (!this.mousyStatus) {
+			document.addEventListener("mousemove", mouse.mousy, false);
+			this.mousyStatus = true;
+		} else {
+			document.removeEventListener("mousemove", mouse.mousy, false);
+			this.mousyStatus = false;
+		}
+		
 	}
 }
 
