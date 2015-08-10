@@ -10,7 +10,7 @@ var mouse = {
 		img.style.left = e.pageX + "px";
 		img.style.top = e.pageY + "px";
 	}, 
-	runMouse() {
+	runMouse(e) {
 		if (!this.mousyStatus) {
 			document.addEventListener("mousemove", mouse.mousy, false);
 			this.mousyStatus = true;
@@ -18,6 +18,8 @@ var mouse = {
 			document.removeEventListener("mousemove", mouse.mousy, false);
 			this.mousyStatus = false;
 		}
+
+		e.stopPropagation;
 		
 	}
 }
