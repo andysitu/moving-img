@@ -43,7 +43,7 @@ var movement = {
 			loc[40] = true;
 		}
 
-		if (e.keyCode === 37) { // left
+		if (loc[37]) { // left
 
 			if (loc[38]) { // up key
 				pict.x -= moveAmount / Math.sqrt(2);
@@ -54,7 +54,7 @@ var movement = {
 			} else {
 				pict.x -= moveAmount;
 			}
-		} else if (e.keyCode === 38) { // up
+		} else if (loc[38]) { // up
 
 			if (loc[37]) { // left key
 				pict.x -= moveAmount / Math.sqrt(2);
@@ -65,7 +65,7 @@ var movement = {
 			} else {
 				pict.y -= moveAmount;
 			}
-		} else if (e.keyCode === 39) { // right
+		} else if (loc[39]) { // right
 
 			if (loc[38]) { // up key
 				pict.x += moveAmount / Math.sqrt(2);
@@ -76,8 +76,8 @@ var movement = {
 			} else {
 				pict.x += moveAmount;
 			}
-		} else if (e.keyCode === 40) { // down
-			
+		} else if (loc[40]) { // down
+
 			if (loc[37]) { // left key
 				pict.x -= moveAmount / Math.sqrt(2);
 				pict.y += moveAmount / Math.sqrt(2);
