@@ -25,14 +25,15 @@ var mouse = {
 }
 
 function keyEvent(e) {
+	var moveAmount = 10;
 	if (e.keyCode === 37) { // left
-		pict.x--;
+		pict.x -= moveAmount;
 	} else if (e.keyCode === 38) { // up
-		pict.y--;
+		pict.y -= moveAmount;
 	} else if (e.keyCode === 39) { // right
-		pict.x++;
+		pict.x += moveAmount;
 	} else if (e.keyCode === 40) { // down
-		pict.y++;
+		pict.y += moveAmount;
 	}
 
 	var img = document.getElementById("picture");
