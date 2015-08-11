@@ -31,14 +31,56 @@ var movement = {
 	keys: {37: false, 38: false, 39: false, 40: false},
 	keyEvent(e) {
 		var moveAmount = movement.speed;
+		var loc = movement.keys;
+
 		if (e.keyCode === 37) { // left
-			pict.x -= moveAmount;
+			loc[37] = true;
+
+			if (loc[38]) { // up key
+				pict.x -= moveAmount / Math.sqrt(2);
+				pict.y -= moveAmount / Math.sqrt(2);
+			} else if (loc[40]) { // down key
+				pict.x -= moveAmount / Math.sqrt(2);
+				pict.y += moveAmount / Math.sqrt(2);
+			} else {
+				pict.x -= moveAmount;
+			}
 		} else if (e.keyCode === 38) { // up
-			pict.y -= moveAmount;
+			loc[38] = true;
+
+			if (loc[37]) { // left key
+				pict.x -= moveAmount / Math.sqrt(2);
+				pict.y -= moveAmount / Math.sqrt(2);
+			} else if (loc[39]) { // right key
+				pict.x += moveAmount / Math.sqrt(2);
+				pict.y -= moveAmount / Math.sqrt(2);
+			} else {
+				pict.y -= moveAmount;
+			}
 		} else if (e.keyCode === 39) { // right
-			pict.x += moveAmount;
+			loc[39] = true;
+
+			if (loc[38]) { // up key
+				pict.x += moveAmount / Math.sqrt(2);
+				pict.y -= moveAmount / Math.sqrt(2);
+			} else if (loc[40]) { // down key
+				pict.x += moveAmount / Math.sqrt(2);
+				pict.y += moveAmount / Math.sqrt(2);
+			} else {
+				pict.x += moveAmount;
+			}
 		} else if (e.keyCode === 40) { // down
-			pict.y += moveAmount;
+			loc[40] = true;
+
+			if (loc[37]) { // left key
+				pict.x -= moveAmount / Math.sqrt(2);
+				pict.y += moveAmount / Math.sqrt(2);
+			} else if (loc[39]) { // right key
+				pict.x += moveAmount / Math.sqrt(2);
+				pict.y += moveAmount / Math.sqrt(2);
+			} else {
+				pict.y += moveAmount;
+			}
 		}
 
 		var img = document.getElementById("picture");
