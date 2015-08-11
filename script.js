@@ -7,8 +7,8 @@ var mouse = {
 	mousyStatus: false,
 	mousy(e) {
 		var img = document.getElementById("picture");
-		img.style.left = e.pageX + "px";
-		img.style.top = e.pageY + "px";
+		img.style.left = (e.pageX - img.clientWidth/2) + "px";
+		img.style.top = (e.pageY - img.clientHeight/2) + "px";
 	}, 
 	runMouse(e) {
 		if (!this.mousyStatus) {
