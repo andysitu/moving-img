@@ -26,6 +26,9 @@ var mouse = {
 
 var movement = {
 	speed: 5,
+
+	// keys is to record arrow keys pressed for simultaneous arrow keys
+	keys: {37: false, 38: false, 39: false, 40: false},
 	keyEvent(e) {
 		var moveAmount = movement.speed;
 		if (e.keyCode === 37) { // left
@@ -42,6 +45,21 @@ var movement = {
 		img.style.left = pict.x + "px";
 		img.style.top = pict.y + "px";
 
+	}, 
+
+	// sets movement.keys to false upon keyup event;
+	killKeys(e) {
+		var loc = movement.keys;
+
+		if (e.keyCode === 37) { // left
+			loc[37] = false;
+		} else if (e.keyCode === 38) { // up
+			loc[38] = false;
+		} else if (e.keyCode === 39) { // right
+			loc[39] = false;
+		} else if (e.keyCode === 40) { // down
+			loc[40] = false;
+		}
 	}
 };
 
@@ -57,4 +75,5 @@ window.onload = function() {
 	img = null;
 
 	document.addEventListener("keydown", movement.keyEvent, false);
+	document.addEventListener("keyup", movement.killKeys, false);
 };
