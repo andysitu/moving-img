@@ -24,23 +24,27 @@ var mouse = {
 	}
 }
 
-function keyEvent(e) {
-	var moveAmount = 10;
-	if (e.keyCode === 37) { // left
-		pict.x -= moveAmount;
-	} else if (e.keyCode === 38) { // up
-		pict.y -= moveAmount;
-	} else if (e.keyCode === 39) { // right
-		pict.x += moveAmount;
-	} else if (e.keyCode === 40) { // down
-		pict.y += moveAmount;
+var movement = {
+	speed: 5,
+	keyEvent(e) {
+		var moveAmount = movement.speed;
+		if (e.keyCode === 37) { // left
+			pict.x -= moveAmount;
+		} else if (e.keyCode === 38) { // up
+			pict.y -= moveAmount;
+		} else if (e.keyCode === 39) { // right
+			pict.x += moveAmount;
+		} else if (e.keyCode === 40) { // down
+			pict.y += moveAmount;
+		}
+
+		var img = document.getElementById("picture");
+		img.style.left = pict.x + "px";
+		img.style.top = pict.y + "px";
+
 	}
+};
 
-	var img = document.getElementById("picture");
-	img.style.left = pict.x + "px";
-	img.style.top = pict.y + "px";
-
-}
 
 window.onload = function() {
 	var clickBut = document.getElementById("but1");
@@ -52,5 +56,5 @@ window.onload = function() {
 	clickBut = null;
 	img = null;
 
-	document.addEventListener("keydown", keyEvent, false);
+	document.addEventListener("keydown", movement.keyEvent, false);
 };
