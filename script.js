@@ -100,57 +100,21 @@ var movement = {
 		img.style.top = pict.y + "px";
 	},
 	keyEvent(e) {
-		var move = movement.move,
-			moveAmount = movement.speed,
-			loc = movement.keys,
-			sqrt = Math.sqrt(2);
+		var loc = movement.keys;
 
-		if (e.keyCode === 37) { // left
-			loc[37] = true;
-		} else if (e.keyCode === 38) { // up
-			loc[38] = true;
-		} else if (e.keyCode === 39) { // right
-			loc[39] = true;
-		} else if (e.keyCode === 40) { // down
-			loc[40] = true;
-		}
-
-		if (loc[37]) { // left
-
-			if (loc[38]) { // up key
-				move(-moveAmount / sqrt, -moveAmount / sqrt);
-			} else if (loc[40]) { // down key
-				move(-moveAmount / sqrt, moveAmount / sqrt);
-			} else {
-				move(-moveAmount, 0);
+		if (e.keyCode >= 37 && e.keyCode <= 40) {
+			if (e.keyCode === 37) { // left
+				loc[37] = true;
+			} else if (e.keyCode === 38) { // up
+				loc[38] = true;
+			} else if (e.keyCode === 39) { // right
+				loc[39] = true;
+			} else if (e.keyCode === 40) { // down
+				loc[40] = true;
 			}
-		} else if (loc[38]) { // up
 
-			if (loc[37]) { // left key
-				move(-moveAmount / sqrt, -moveAmount / sqrt);
-			} else if (loc[39]) { // right key
-				move(moveAmount / sqrt, -moveAmount / sqrt);
-			} else {
-				move(0, -moveAmount);
-			}
-		} else if (loc[39]) { // right
-
-			if (loc[38]) { // up key
-				move(moveAmount / sqrt, -moveAmount / sqrt);
-			} else if (loc[40]) { // down key
-				move(moveAmount / sqrt, moveAmount / sqrt);
-			} else {
-				move(moveAmount, 0);
-			}
-		} else if (loc[40]) { // down
-
-			if (loc[37]) { // left key
-				move(-moveAmount / sqrt, moveAmount / sqrt);
-			} else if (loc[39]) { // right key
-				move(moveAmount / sqrt, moveAmount / sqrt);
-			} else {
-				move(0, moveAmount);
-			}
+			movement.moveStatus = true;
+			movement.moveEvent();
 		}
 
 	}, 
