@@ -31,7 +31,8 @@ var movement = {
 	keys: {37: false, 38: false, 39: false, 40: false},
 	keyEvent(e) {
 		var moveAmount = movement.speed;
-		var loc = movement.keys;
+		var loc = movement.keys,
+			sqrt = Math.sqrt(2);
 
 		if (e.keyCode === 37) { // left
 			loc[37] = true;
@@ -46,44 +47,44 @@ var movement = {
 		if (loc[37]) { // left
 
 			if (loc[38]) { // up key
-				pict.x -= moveAmount / Math.sqrt(2);
-				pict.y -= moveAmount / Math.sqrt(2);
+				pict.x -= moveAmount / sqrt;
+				pict.y -= moveAmount / sqrt;
 			} else if (loc[40]) { // down key
-				pict.x -= moveAmount / Math.sqrt(2);
-				pict.y += moveAmount / Math.sqrt(2);
+				pict.x -= moveAmount / sqrt;
+				pict.y += moveAmount / sqrt;
 			} else {
 				pict.x -= moveAmount;
 			}
 		} else if (loc[38]) { // up
 
 			if (loc[37]) { // left key
-				pict.x -= moveAmount / Math.sqrt(2);
-				pict.y -= moveAmount / Math.sqrt(2);
+				pict.x -= moveAmount / sqrt;
+				pict.y -= moveAmount / sqrt;
 			} else if (loc[39]) { // right key
-				pict.x += moveAmount / Math.sqrt(2);
-				pict.y -= moveAmount / Math.sqrt(2);
+				pict.x += moveAmount / sqrt;
+				pict.y -= moveAmount / sqrt;
 			} else {
 				pict.y -= moveAmount;
 			}
 		} else if (loc[39]) { // right
 
 			if (loc[38]) { // up key
-				pict.x += moveAmount / Math.sqrt(2);
-				pict.y -= moveAmount / Math.sqrt(2);
+				pict.x += moveAmount / sqrt;
+				pict.y -= moveAmount / sqrt;
 			} else if (loc[40]) { // down key
-				pict.x += moveAmount / Math.sqrt(2);
-				pict.y += moveAmount / Math.sqrt(2);
+				pict.x += moveAmount / sqrt;
+				pict.y += moveAmount / sqrt;
 			} else {
 				pict.x += moveAmount;
 			}
 		} else if (loc[40]) { // down
 
 			if (loc[37]) { // left key
-				pict.x -= moveAmount / Math.sqrt(2);
-				pict.y += moveAmount / Math.sqrt(2);
+				pict.x -= moveAmount / sqrt;
+				pict.y += moveAmount / sqrt;
 			} else if (loc[39]) { // right key
-				pict.x += moveAmount / Math.sqrt(2);
-				pict.y += moveAmount / Math.sqrt(2);
+				pict.x += moveAmount / sqrt;
+				pict.y += moveAmount / sqrt;
 			} else {
 				pict.y += moveAmount;
 			}
@@ -122,6 +123,6 @@ window.onload = function() {
 	clickBut = null;
 	img = null;
 
-	document.addEventListener("keydown", movement.keyEvent, false);
+	document.addEventListener("keydown", movement.addKey, false);
 	document.addEventListener("keyup", movement.killKeys, false);
 };
