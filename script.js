@@ -36,10 +36,11 @@ var movement = {
 		var img = document.getElementById("picture");
 		img.style.left = pict.x + "px";
 		img.style.top = pict.y + "px";
-	}
+	},
 	keyEvent(e) {
-		var moveAmount = movement.speed;
-		var loc = movement.keys,
+		var move = movement.move,
+			moveAmount = movement.speed,
+			loc = movement.keys,
 			sqrt = Math.sqrt(2);
 
 		if (e.keyCode === 37) { // left
@@ -55,52 +56,40 @@ var movement = {
 		if (loc[37]) { // left
 
 			if (loc[38]) { // up key
-				pict.x -= moveAmount / sqrt;
-				pict.y -= moveAmount / sqrt;
+				move(-moveAmount / sqrt, -moveAmount / sqrt);
 			} else if (loc[40]) { // down key
-				pict.x -= moveAmount / sqrt;
-				pict.y += moveAmount / sqrt;
+				move(-moveAmount / sqrt, moveAmount / sqrt);
 			} else {
-				pict.x -= moveAmount;
+				move(-moveAmount, 0);
 			}
 		} else if (loc[38]) { // up
 
 			if (loc[37]) { // left key
-				pict.x -= moveAmount / sqrt;
-				pict.y -= moveAmount / sqrt;
+				move(-moveAmount / sqrt, -moveAmount / sqrt);
 			} else if (loc[39]) { // right key
-				pict.x += moveAmount / sqrt;
-				pict.y -= moveAmount / sqrt;
+				move(moveAmount / sqrt, -moveAmount / sqrt);
 			} else {
-				pict.y -= moveAmount;
+				move(0, -moveAmount);
 			}
 		} else if (loc[39]) { // right
 
 			if (loc[38]) { // up key
-				pict.x += moveAmount / sqrt;
-				pict.y -= moveAmount / sqrt;
+				move(moveAmount / sqrt, -moveAmount / sqrt);
 			} else if (loc[40]) { // down key
-				pict.x += moveAmount / sqrt;
-				pict.y += moveAmount / sqrt;
+				move(moveAmount / sqrt, moveAmount / sqrt);
 			} else {
-				pict.x += moveAmount;
+				move(moveAmount, 0);
 			}
 		} else if (loc[40]) { // down
 
 			if (loc[37]) { // left key
-				pict.x -= moveAmount / sqrt;
-				pict.y += moveAmount / sqrt;
+				move(-moveAmount / sqrt, moveAmount / sqrt);
 			} else if (loc[39]) { // right key
-				pict.x += moveAmount / sqrt;
-				pict.y += moveAmount / sqrt;
+				move(moveAmount / sqrt, moveAmount / sqrt);
 			} else {
-				pict.y += moveAmount;
+				move(0, moveAmount);
 			}
 		}
-
-		var img = document.getElementById("picture");
-		img.style.left = pict.x + "px";
-		img.style.top = pict.y + "px";
 
 	}, 
 
@@ -131,6 +120,6 @@ window.onload = function() {
 	clickBut = null;
 	img = null;
 
-	document.addEventListener("keydown", movement.addKey, false);
+	document.addEventListener("keydown", movement.keyEvent, false);
 	document.addEventListener("keyup", movement.killKeys, false);
 };
