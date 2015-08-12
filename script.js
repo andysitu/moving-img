@@ -42,6 +42,11 @@ var movement = {
 		}, 100);
 	},
 	mover(){
+		var loc = movement.keys,
+			move = movement.move,
+			moveAmount = movement.speed,
+			sqrt = Math.sqrt(2);
+
 		if (loc[37]) { // left
 
 			if (loc[38]) { // up key
@@ -51,6 +56,7 @@ var movement = {
 			} else {
 				move(-moveAmount, 0);
 			}
+			return true;
 		} else if (loc[38]) { // up
 
 			if (loc[37]) { // left key
@@ -60,6 +66,7 @@ var movement = {
 			} else {
 				move(0, -moveAmount);
 			}
+			return true;
 		} else if (loc[39]) { // right
 
 			if (loc[38]) { // up key
@@ -69,6 +76,7 @@ var movement = {
 			} else {
 				move(moveAmount, 0);
 			}
+			return true;
 		} else if (loc[40]) { // down
 
 			if (loc[37]) { // left key
@@ -78,8 +86,11 @@ var movement = {
 			} else {
 				move(0, moveAmount);
 			}
+			return true;
+		} else {
+			return false;
 		}
-	}
+	},
 	move(x, y) {
 		pict.x += x;
 		pict.y += y;
