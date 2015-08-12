@@ -39,6 +39,45 @@ var movement = {
 			}
 		}, 100);
 	},
+	mover(){
+		if (loc[37]) { // left
+
+			if (loc[38]) { // up key
+				move(-moveAmount / sqrt, -moveAmount / sqrt);
+			} else if (loc[40]) { // down key
+				move(-moveAmount / sqrt, moveAmount / sqrt);
+			} else {
+				move(-moveAmount, 0);
+			}
+		} else if (loc[38]) { // up
+
+			if (loc[37]) { // left key
+				move(-moveAmount / sqrt, -moveAmount / sqrt);
+			} else if (loc[39]) { // right key
+				move(moveAmount / sqrt, -moveAmount / sqrt);
+			} else {
+				move(0, -moveAmount);
+			}
+		} else if (loc[39]) { // right
+
+			if (loc[38]) { // up key
+				move(moveAmount / sqrt, -moveAmount / sqrt);
+			} else if (loc[40]) { // down key
+				move(moveAmount / sqrt, moveAmount / sqrt);
+			} else {
+				move(moveAmount, 0);
+			}
+		} else if (loc[40]) { // down
+
+			if (loc[37]) { // left key
+				move(-moveAmount / sqrt, moveAmount / sqrt);
+			} else if (loc[39]) { // right key
+				move(moveAmount / sqrt, moveAmount / sqrt);
+			} else {
+				move(0, moveAmount);
+			}
+		}
+	}
 	move(x, y) {
 		pict.x += x;
 		pict.y += y;
