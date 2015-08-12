@@ -29,6 +29,16 @@ var movement = {
 
 	// keys is to record arrow keys pressed for simultaneous arrow keys
 	keys: {37: false, 38: false, 39: false, 40: false},
+	moveStatus: false,
+	moveEvent(status){
+		window.setTimeout(function() {
+			if (movement.moveStatus === true) {
+				movement.mover();
+				
+				window.setTimeout(arguments.callee, 50);
+			}
+		}, 100);
+	},
 	move(x, y) {
 		pict.x += x;
 		pict.y += y;
