@@ -29,6 +29,14 @@ var movement = {
 
 	// keys is to record arrow keys pressed for simultaneous arrow keys
 	keys: {37: false, 38: false, 39: false, 40: false},
+	move(x, y) {
+		pict.x += x;
+		pict.y += y;
+
+		var img = document.getElementById("picture");
+		img.style.left = pict.x + "px";
+		img.style.top = pict.y + "px";
+	}
 	keyEvent(e) {
 		var moveAmount = movement.speed;
 		var loc = movement.keys,
