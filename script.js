@@ -7,6 +7,7 @@ var movement = {
 	keys: {37: false, 38: false, 39: false, 40: false},
 	moveStatus: false,
 	moveID: null,
+	sqrt: Math.sqrt(2),
 	moveEvent(){
 		window.setTimeout(function() {
 			clearTimeout(movement.moveID);
@@ -20,15 +21,14 @@ var movement = {
 	mover(){
 		var loc = movement.keys,
 			move = movement.move,
-			moveAmount = movement.speed,
-			sqrt = Math.sqrt(2);
+			moveAmount = movement.speed;
 
 		if (loc[37]) { // left
 
 			if (loc[38]) { // up key
-				move(-moveAmount / sqrt, -moveAmount / sqrt);
+				move(-moveAmount / movement.sqrt, -moveAmount / movement.sqrt);
 			} else if (loc[40]) { // down key
-				move(-moveAmount / sqrt, moveAmount / sqrt);
+				move(-moveAmount / movement.sqrt, moveAmount / movement.sqrt);
 			} else {
 				move(-moveAmount, 0);
 			}
@@ -36,7 +36,7 @@ var movement = {
 		} else if (loc[38]) { // up
 
 			if (loc[39]) { // right key
-				move(moveAmount / sqrt, -moveAmount / sqrt);
+				move(moveAmount / movement.sqrt, -moveAmount / movement.sqrt);
 			} else {
 				move(0, -moveAmount);
 			}
@@ -44,7 +44,7 @@ var movement = {
 		} else if (loc[39]) { // right
 
 			if (loc[40]) { // down key
-				move(moveAmount / sqrt, moveAmount / sqrt);
+				move(moveAmount / movement.sqrt, moveAmount / movement.sqrt);
 			} else {
 				move(moveAmount, 0);
 			}
