@@ -35,9 +35,7 @@ var movement = {
 			return true;
 		} else if (loc[38]) { // up
 
-			if (loc[37]) { // left key
-				move(-moveAmount / sqrt, -moveAmount / sqrt);
-			} else if (loc[39]) { // right key
+			if (loc[39]) { // right key
 				move(moveAmount / sqrt, -moveAmount / sqrt);
 			} else {
 				move(0, -moveAmount);
@@ -45,9 +43,7 @@ var movement = {
 			return true;
 		} else if (loc[39]) { // right
 
-			if (loc[38]) { // up key
-				move(moveAmount / sqrt, -moveAmount / sqrt);
-			} else if (loc[40]) { // down key
+			if (loc[40]) { // down key
 				move(moveAmount / sqrt, moveAmount / sqrt);
 			} else {
 				move(moveAmount, 0);
@@ -55,13 +51,7 @@ var movement = {
 			return true;
 		} else if (loc[40]) { // down
 
-			if (loc[37]) { // left key
-				move(-moveAmount / sqrt, moveAmount / sqrt);
-			} else if (loc[39]) { // right key
-				move(moveAmount / sqrt, moveAmount / sqrt);
-			} else {
-				move(0, moveAmount);
-			}
+			move(0, moveAmount);
 			return true;
 		} else {
 			return false;
