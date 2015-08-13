@@ -44,7 +44,7 @@ var movement = {
 			if (movement.moveStatus === true) {
 				movement.moveStatus = movement.mover();
 
-				movement.moveID = window.setTimeout(arguments.callee, 50);
+				movement.moveID = window.setTimeout(arguments.callee, 100);
 			}
 		}, 100);
 	},
