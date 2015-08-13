@@ -26,13 +26,11 @@ var mouse = {
 			this.mousyStatus = false;
 		}
 
-		e.stopPropagation;
-		
 	}
 }
 
 var movement = {
-	speed: 5,
+	speed: 10,
 
 	// keys is to record arrow keys pressed for simultaneous arrow keys
 	keys: {37: false, 38: false, 39: false, 40: false},
