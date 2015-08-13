@@ -1,9 +1,6 @@
-var pict = {
-	x: 10,
-	y: 10
-}
-
 var movement = {
+	x: 10,
+	y: 10,
 	speed: 10,
 
 	// keys is to record arrow keys pressed for simultaneous arrow keys
@@ -71,12 +68,12 @@ var movement = {
 		}
 	},
 	move(x, y) {
-		pict.x += x;
-		pict.y += y;
+		movement.x += x;
+		movement.y += y;
 
 		var img = document.getElementById("picture");
-		img.style.left = pict.x + "px";
-		img.style.top = pict.y + "px";
+		img.style.left = movement.x + "px";
+		img.style.top = movement.y + "px";
 	},
 	keyEvent(e) {
 		var loc = movement.keys;
