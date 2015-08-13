@@ -3,32 +3,6 @@ var pict = {
 	y: 10
 }
 
-var mouse = {
-	mousyStatus: false,
-	mousyID: null,
-	mousy(e) {
-		var img = document.getElementById("picture");
-		img.style.left = (e.pageX - img.clientWidth/2) + "px";
-		img.style.top = (e.pageY - img.clientHeight/2) + "px";
-	}, 
-	runMouse(e) {
-		if (!this.mousyStatus) {
-			window.setTimeout(function() {
-				clearTimeout(mouse.mousyID);
-
-				mouse.mousy(e)
-
-				mouse.mousyID = window.setTimeout(arguments.callee, 100);
-			}, 100);
-			this.mousyStatus = true;
-		} else {
-			clearTimeout(mouse.mousyID);
-			this.mousyStatus = false;
-		}
-
-	}
-}
-
 var movement = {
 	speed: 10,
 
@@ -142,15 +116,6 @@ var movement = {
 
 
 window.onload = function() {
-	var clickBut = document.getElementById("but1");
-	var img = document.getElementById("picture");
-
-	clickBut.addEventListener("click", mouse.runMouse, false);
-	img.addEventListener("click", mouse.runMouse, false);
-
-	clickBut = null;
-	img = null;
-
 	document.addEventListener("keydown", movement.keyEvent, false);
 	document.addEventListener("keyup", movement.killKeys, false);
 };
