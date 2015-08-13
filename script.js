@@ -5,6 +5,7 @@ var pict = {
 
 var mouse = {
 	mousyStatus: false,
+	mousyID: null,
 	mousy(e) {
 		var img = document.getElementById("picture");
 		img.style.left = (e.pageX - img.clientWidth/2) + "px";
@@ -12,10 +13,16 @@ var mouse = {
 	}, 
 	runMouse(e) {
 		if (!this.mousyStatus) {
-			document.addEventListener("mousemove", mouse.mousy, false);
+			window.setTimeout(function() {
+				clearTimeout(mouse.mousyID);
+
+				mouse.mousy(e)
+
+				mouse.mousyID = window.setTimeout(arguments.callee, 100);
+			}, 100);
 			this.mousyStatus = true;
 		} else {
-			document.removeEventListener("mousemove", mouse.mousy, false);
+			clearTimeout(mouse.mousyID);
 			this.mousyStatus = false;
 		}
 
